@@ -9,7 +9,7 @@ export const SalesNav = () => {
     <ul className="navbar">
       <div className="navbar__home">
         <Link className="navbar__link" to="/">
-          Home
+          Search
         </Link>
       </div>
       <ul className="navbar__sales">
@@ -41,3 +41,4 @@ export const SalesNav = () => {
     </ul>
   );
 };
+

@@ -41,3 +41,11 @@
     display: flex;
     justify-content: center;
   }
+
+  .vehicle-show-card {
+    justify-content: center;
+    flex: wrap;
+    align-items: center;
+    padding: 1rem;
+    border: 3px solid red;
+  }
