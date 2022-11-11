@@ -4,6 +4,7 @@ import { VehicleList } from "../vehicles/VehicleList"
 import { VehicleShow } from "../vehicles/VehicleShow";
 import { useEffect, useState } from "react"
 import { VehicleEdit } from "../vehicles/VehicleEdit";
+import { VehicleContainer } from "../vehicles/VehicleContainer";
 
 export const ServiceView = () => {
 
@@ -37,6 +38,7 @@ export const ServiceView = () => {
         }
       >
         <Route path="/vehicles" element={<VehicleList />} />
+        <Route path="/" element={<VehicleContainer />} />
         <Route path="/vehicles/view" element={<VehicleShow />} />
         <Route path="/vehicles/edit" element={<VehicleEdit />} />
       </Route>

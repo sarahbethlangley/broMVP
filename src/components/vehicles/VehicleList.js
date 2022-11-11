@@ -4,10 +4,11 @@ import { useNavigate, Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 
 
-export const VehicleList = () => {
+export const VehicleList = ( {searchTermState}) => {
   const [vehicles, setVehicles] = useState([])
   const [locationId, setLocationId] = useState([])
   const [location, setLocation] = useState({})
+  const [filteredProducts, setFiltered] = useState([])
 
   const localBroUser = localStorage.getItem("bro_user")
   const broUserObject = JSON.parse(localBroUser)
@@ -21,6 +22,18 @@ export const VehicleList = () => {
   })
 
   const navigate = useNavigate()
+
+
+  useEffect(
+    ()=>{
+        const searchVehicles = vehicles.filter(vehicle => {
+            return vehicle.stockNumber.toLowerCase().startsWith(searchTermState.toLowerCase())
+        })
+        setFiltered(searchVehicles)
+    }, [ searchTermState ]
+)
+
+
 
   // simple post request with JSON body using fetch https://jasonwatmore.com/post/2020/02/01/react-fetch-http-post-request-examples
   const getAllVehicles = () => {
