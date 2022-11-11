@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { LocationFilter } from "./LocationFilter";
 
+
 export const VehicleEdit = (evt) => {
   const [vehicle, setVehicle] = useState({
     stockNumber: "",
@@ -16,7 +17,6 @@ export const VehicleEdit = (evt) => {
 
   const navigate = useNavigate();
 
-  // setting this value to this variable.  why?  to pass this value in the fetch in order to pull this info, which was set in the onClick event on VL.  onClick, i'm navigating to the edit form and then setting the value to whatever the edit vehicle id is
   const vehicleEditId = localStorage.getItem("editVehicleId");
 
   const handleSelectLocation = (loc) => {
@@ -110,6 +110,23 @@ export const VehicleEdit = (evt) => {
                 type="text"
                 name="model"
                 value={vehicle.model}
+                onChange={handleUserInput}
+              />
+            </div>
+             ) : (
+              ""
+            )}
+          </fieldset>
+          <fieldset>
+          {broUserObject.sales ? (
+            <div className="form-group">
+            <label htmlFor="model">Image URL </label>
+            <input
+                id="image"
+                type="text"
+                className="form-control"
+                placeholder="image url"
+                value={vehicle.imageURL}
                 onChange={handleUserInput}
               />
             </div>

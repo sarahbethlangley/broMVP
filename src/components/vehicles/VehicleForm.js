@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { LocationFilter } from "./LocationFilter"
 
+
 export const VehicleForm = () => {
   const [vehicles, setVehicles] = useState([])
   const [userChoices, setUserChoices] = useState({
@@ -10,6 +11,7 @@ export const VehicleForm = () => {
     model: "",
     locationName: "",
     locationId: 0,
+    imageURL: ""
   })
 
 
@@ -97,10 +99,28 @@ export const VehicleForm = () => {
           </fieldset>
           <fieldset>
             <div className="form-group">
+            <label htmlFor="model">Image URL </label>
+            <input
+                id="image"
+                type="text"
+                className="form-control"
+                placeholder="image url"
+                value={userChoices.imageURL}
+                onChange={(event) => {
+                  const copy = { ...userChoices }
+                  copy.imageURL = event.target.value
+                  setUserChoices(copy)
+                }}
+              />
+            </div>
+          </fieldset>
+          <fieldset>
+            <div className="form-group">
               <label htmlFor="make">Locations : </label>
               <LocationFilter id="locationId" handleSelectLocation={handleSelectLocation} />
             </div>
           </fieldset>
+      
         </form>
       </div>
       <button
